@@ -33,6 +33,15 @@ jobs:
         with:
           path: /home/runner/work/iac-labs/iac-labs/example-app/.venv
           key: ${{ runner.os }}-venv
+
+  lint:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./example-app
+
+    steps:
       - name: lint
         run: poetry run task lint
       - name: formatter
