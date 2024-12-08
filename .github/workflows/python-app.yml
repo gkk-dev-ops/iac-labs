@@ -80,7 +80,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install Poetry Action
-        uses: snok/install-poetry@v1.3.
+        uses: snok/install-poetry@v1.3.4
       - name: Cache build venv
         id: cached-poetry-dependencies
         uses: actions/cache@v3
@@ -104,7 +104,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install Poetry Action
-        uses: snok/install-poetry@v1.3.
+        uses: snok/install-poetry@v1.3.4
       - name: Cache build venv
         id: cached-poetry-dependencies
         uses: actions/cache@v3
@@ -128,7 +128,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install Poetry Action
-        uses: snok/install-poetry@v1.3.
+        uses: snok/install-poetry@v1.3.4
       - name: Cache build venv
         id: cached-poetry-dependencies
         uses: actions/cache@v3
