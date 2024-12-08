@@ -37,17 +37,45 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     needs: build
-
     defaults:
       run:
         working-directory: ./example-app
-
     steps:
       - name: lint
         run: poetry run task lint
+    concurrency:
+      group: code-quality-group
+
+  formatter:
+    runs-on: ubuntu-latest
+    needs: build
+    defaults:
+      run:
+        working-directory: ./example-app
+    steps:
       - name: formatter
         run: poetry run task formatter
+    concurrency:
+      group: code-quality-group
+
+  security:
+    runs-on: ubuntu-latest
+    needs: build
+    defaults:
+      run:
+        working-directory: ./example-app
+    steps:
       - name: security
         run: poetry run task security
-      - name: unittests
+    concurrency:
+      group: code-quality-group
+
+  unittests:
+    runs-on: ubuntu-latest
+    needs: [lint, formatter, security]
+    defaults:
+      run:
+        working-directory: ./example-app
+    steps:
+      - name: Run unit tests
         run: poetry run task test
