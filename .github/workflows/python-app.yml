@@ -19,25 +19,29 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: "3.10"
+      - name: Install Poetry Action
+        # You may pin to the exact commit or the version.
+        # uses: snok/install-poetry@93ada01c735cc8a383ce0ce2ae205a21c415379b
+        uses: snok/install-poetry@v1.3.4
 
-      # - uses: snok/install-poetry@v1.3.4
-      # - name: Install Poetry Action
-      # Zainstaluj poetry poleceniem
-      - run: cd example-app
-      - run: curl -sSL https://install.python-poetry.org | python3 -
-      # Dodaj poetry do ścieżki systemowej
-      - run: export PATH=$PATH:$HOME/.local/bin
-      # Upewnij się, ze poetry działa prawidłowo poetry debug info
-      # Wykonaj polecenie
-      - run: poetry install --no-root # w celu instalacji zależności projektowych
-      # Wykonaj polecenie
-      - run: poetry run task test # w celu uruchomienia testów jednostkowych
-      # Upewnij się, ze wszystkie testy zakończyły się powodzeniem
-      # Wykonaj polecenie
-      - run: poetry run task lint # w celu uruchomienia testów statycznych kodu
-      # Upewnij się, ze wszystkie testy zakończyły się powodzeniem
-      # Wykonaj polecenie
-      - run: poetry run task formatter # w celu uruchomienia formatera kodu
-      # Upewnij się, ze wszystkie testy zakończyły się powodzeniem
-      # Wykonaj polecenie
-      - run: poetry run task security # w celu uruchomienia testów bezpieczeństwa
+      # # - uses: snok/install-poetry@v1.3.4
+      # # - name: Install Poetry Action
+      # # Zainstaluj poetry poleceniem
+      # - run: cd example-app
+      # - run: curl -sSL https://install.python-poetry.org | python3 -
+      # # Dodaj poetry do ścieżki systemowej
+      # - run: export PATH=$PATH:$HOME/.local/bin
+      # # Upewnij się, ze poetry działa prawidłowo poetry debug info
+      # # Wykonaj polecenie
+      # - run: poetry install --no-root # w celu instalacji zależności projektowych
+      # # Wykonaj polecenie
+      # - run: poetry run task test # w celu uruchomienia testów jednostkowych
+      # # Upewnij się, ze wszystkie testy zakończyły się powodzeniem
+      # # Wykonaj polecenie
+      # - run: poetry run task lint # w celu uruchomienia testów statycznych kodu
+      # # Upewnij się, ze wszystkie testy zakończyły się powodzeniem
+      # # Wykonaj polecenie
+      # - run: poetry run task formatter # w celu uruchomienia formatera kodu
+      # # Upewnij się, ze wszystkie testy zakończyły się powodzeniem
+      # # Wykonaj polecenie
+      # - run: poetry run task security # w celu uruchomienia testów bezpieczeństwa
