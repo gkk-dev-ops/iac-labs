@@ -9,8 +9,9 @@ on:
 permissions:
   contents: read
 
-# concurrency:
-#   group: code-quality-group
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -57,8 +58,6 @@ jobs:
           key: ${{ runner.os }}-venv
       - name: lint
         run: poetry run task lint
-    # concurrency:
-    #   group: code-quality-group
 
   formatter:
     strategy:
@@ -77,8 +76,6 @@ jobs:
           key: ${{ runner.os }}-venv
       - name: formatter
         run: poetry run task formatter
-    # concurrency:
-    #   group: code-quality-group
 
   security:
     strategy:
@@ -97,8 +94,6 @@ jobs:
           key: ${{ runner.os }}-venv
       - name: security
         run: poetry run task security
-    # concurrency:
-    #   group: code-quality-group
 
   unittests:
     strategy:
