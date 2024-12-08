@@ -25,6 +25,8 @@ jobs:
           python-version: "3.11"
       - name: Install Poetry Action
         uses: snok/install-poetry@v1.3.4
+      - name: Install dependecies with poetry
+        run: poetry install --no-root
       - name: lint
         run: poetry run task lint
       - name: formatter
