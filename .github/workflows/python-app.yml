@@ -54,7 +54,7 @@ jobs:
         shell: bash
     steps:
       - uses: actions/cache/restore@v4
-        id: cache
+        id: cached-poetry-dependencies
         with:
           path: /home/runner/work/iac-labs/iac-labs/example-app/.venv
           key: ${{ runner.os }}-venv
@@ -73,7 +73,7 @@ jobs:
         shell: bash
     steps:
       - uses: actions/cache/restore@v4
-        id: cache
+        id: cached-poetry-dependencies
         with:
           path: /home/runner/work/iac-labs/iac-labs/example-app/.venv
           key: ${{ runner.os }}-venv
@@ -92,7 +92,7 @@ jobs:
         shell: bash
     steps:
       - uses: actions/cache/restore@v4
-        id: cache
+        id: cached-poetry-dependencies
         with:
           path: /home/runner/work/iac-labs/iac-labs/example-app/.venv
           key: ${{ runner.os }}-venv
@@ -111,7 +111,7 @@ jobs:
         shell: bash
     steps:
       - uses: actions/cache/restore@v4
-        id: cache
+        id: cached-poetry-dependencies
         with:
           path: /home/runner/work/iac-labs/iac-labs/example-app/.venv
           key: ${{ runner.os }}-venv
