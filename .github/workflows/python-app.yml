@@ -9,6 +9,9 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: code-quality-group
+
 jobs:
   build:
     runs-on: ubuntu-latest
