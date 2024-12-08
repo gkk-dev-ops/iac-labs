@@ -27,6 +27,12 @@ jobs:
         uses: snok/install-poetry@v1.3.4
       - name: Install dependecies with poetry
         run: poetry install --no-root
+      - name: Cache build venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: /home/runner/work/iac-labs/iac-labs/example-app/.venv
+          key: ${{ runner.os }}-venv
       - name: lint
         run: poetry run task lint
       - name: formatter
