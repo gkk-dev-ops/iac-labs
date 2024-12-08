@@ -23,6 +23,7 @@ jobs:
       # - uses: snok/install-poetry@v1.3.4
       # - name: Install Poetry Action
       # Zainstaluj poetry poleceniem
+      - run: cd example-app
       - run: curl -sSL https://install.python-poetry.org | python3 -
       # Dodaj poetry do ścieżki systemowej
       - run: export PATH=$PATH:$HOME/.local/bin
