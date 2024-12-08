@@ -2,23 +2,41 @@ name: IAAC Application
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 permissions:
   contents: read
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.10"
-    - name: Install Poetry Action
-    - uses: snok/install-poetry@v1.3.4
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+
+      # - uses: snok/install-poetry@v1.3.4
+      # - name: Install Poetry Action
+      # Zainstaluj poetry poleceniem
+      - run: curl -sSL https://install.python-poetry.org | python3 -
+      # Dodaj poetry do ścieżki systemowej
+      - run: export PATH=$PATH:$HOME/.local/bin
+      # Upewnij się, ze poetry działa prawidłowo poetry debug info
+      # Wykonaj polecenie
+      - run: poetry install --no-root # w celu instalacji zależności projektowych
+      # Wykonaj polecenie
+      - run: poetry run task test # w celu uruchomienia testów jednostkowych
+      # Upewnij się, ze wszystkie testy zakończyły się powodzeniem
+      # Wykonaj polecenie
+      - run: poetry run task lint # w celu uruchomienia testów statycznych kodu
+      # Upewnij się, ze wszystkie testy zakończyły się powodzeniem
+      # Wykonaj polecenie
+      - run: poetry run task formatter # w celu uruchomienia formatera kodu
+      # Upewnij się, ze wszystkie testy zakończyły się powodzeniem
+      # Wykonaj polecenie
+      - run: poetry run task security # w celu uruchomienia testów bezpieczeństwa
