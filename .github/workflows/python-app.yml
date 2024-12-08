@@ -23,6 +23,7 @@ jobs:
     defaults:
       run:
         working-directory: ./example-app
+        shell: bash
 
     steps:
       - uses: actions/checkout@v4
@@ -50,6 +51,7 @@ jobs:
     defaults:
       run:
         working-directory: ./example-app
+        shell: bash
     steps:
       - uses: actions/cache/restore@v4
         id: cache
@@ -68,6 +70,7 @@ jobs:
     defaults:
       run:
         working-directory: ./example-app
+        shell: bash
     steps:
       - uses: actions/cache/restore@v4
         id: cache
@@ -86,6 +89,7 @@ jobs:
     defaults:
       run:
         working-directory: ./example-app
+        shell: bash
     steps:
       - uses: actions/cache/restore@v4
         id: cache
@@ -104,6 +108,7 @@ jobs:
     defaults:
       run:
         working-directory: ./example-app
+        shell: bash
     steps:
       - uses: actions/cache/restore@v4
         id: cache
