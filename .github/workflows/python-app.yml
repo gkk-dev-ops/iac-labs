@@ -29,7 +29,7 @@ jobs:
         run: poetry install --no-root
       - name: Cache build venv
         id: cached-poetry-dependencies
-        uses: actions/cache@v3
+        uses: actions/cache/save@v4
         with:
           path: /home/runner/work/iac-labs/iac-labs/example-app/.venv
           key: ${{ runner.os }}-venv
@@ -41,6 +41,11 @@ jobs:
       run:
         working-directory: ./example-app
     steps:
+      - uses: actions/cache/restore@v4
+        id: cache
+        with:
+          path: /home/runner/work/iac-labs/iac-labs/example-app/.venv
+          key: ${{ runner.os }}-venv
       - name: lint
         run: poetry run task lint
     concurrency:
@@ -53,6 +58,11 @@ jobs:
       run:
         working-directory: ./example-app
     steps:
+      - uses: actions/cache/restore@v4
+        id: cache
+        with:
+          path: /home/runner/work/iac-labs/iac-labs/example-app/.venv
+          key: ${{ runner.os }}-venv
       - name: formatter
         run: poetry run task formatter
     concurrency:
@@ -65,6 +75,11 @@ jobs:
       run:
         working-directory: ./example-app
     steps:
+      - uses: actions/cache/restore@v4
+        id: cache
+        with:
+          path: /home/runner/work/iac-labs/iac-labs/example-app/.venv
+          key: ${{ runner.os }}-venv
       - name: security
         run: poetry run task security
     concurrency:
@@ -77,5 +92,10 @@ jobs:
       run:
         working-directory: ./example-app
     steps:
+      - uses: actions/cache/restore@v4
+        id: cache
+        with:
+          path: /home/runner/work/iac-labs/iac-labs/example-app/.venv
+          key: ${{ runner.os }}-venv
       - name: Run unit tests
         run: poetry run task test
